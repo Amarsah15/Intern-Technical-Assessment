@@ -8,8 +8,11 @@ import Dashboard from "../pages/Dashboard";
 import PublicProfile from "../pages/PublicProfile";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "../components/NotFound";
+import { useAuthStore } from "../store/authStore";
+import { Navigate } from "react-router-dom";
 
 export default function AppRoutes() {
+  const { isAuthenticated } = useAuthStore();
   return (
     <BrowserRouter>
       <Navbar />
@@ -41,8 +44,14 @@ export default function AppRoutes() {
       />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/login"
+          element={!isAuthenticated ? <Login /> : <Navigate to="/" replace />}
+        />
+        <Route
+          path="/signup"
+          element={!isAuthenticated ? <Signup /> : <Navigate to="/" replace />}
+        />
         <Route
           path="/dashboard"
           element={
