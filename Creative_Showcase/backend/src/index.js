@@ -13,8 +13,13 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "creative-showcase-amarnath-kumar.vercel.app",
+    ],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
+    exposedHeaders: ["Set-Cookie"],
   })
 );
 
