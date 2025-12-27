@@ -15,13 +15,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "creative-showcase-amarnath-kumar.vercel.app",
+      "https://creative-showcase-amarnath-kumar.vercel.app",
     ],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
-    exposedHeaders: ["Set-Cookie"],
   })
 );
+
+app.options("*", cors());
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));

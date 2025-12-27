@@ -7,6 +7,7 @@ import Signup from "../pages/Signup";
 import Dashboard from "../pages/Dashboard";
 import PublicProfile from "../pages/PublicProfile";
 import PrivateRoute from "./PrivateRoute";
+import NotFound from "../components/NotFound";
 
 export default function AppRoutes() {
   return (
@@ -51,6 +52,7 @@ export default function AppRoutes() {
           }
         />
         <Route path="/profile/:username" element={<PublicProfile />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

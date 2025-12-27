@@ -6,9 +6,11 @@ export const useAuthStore = create((set) => ({
   user: null,
   isAuthenticated: false,
   isLoading: true,
+  isCheckingAuth: false,
 
   // CHECK AUTH
   checkAuth: async () => {
+    set({ isCheckingAuth: true });
     try {
       const res = await api.get("/auth/me");
       set({
@@ -22,6 +24,8 @@ export const useAuthStore = create((set) => ({
         isAuthenticated: false,
         isLoading: false,
       });
+    } finally {
+      set({ isCheckingAuth: false });
     }
   },
 
@@ -90,5 +94,4 @@ export const useAuthStore = create((set) => ({
       toast.error("Logout failed");
     }
   },
-
 }));
