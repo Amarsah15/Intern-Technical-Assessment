@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import AppRoutes from "./routes/AppRoutes";
 import { useAuthStore } from "./store/authStore";
+import Loader from "./components/ui/Loader";
 
 export default function App() {
   const checkAuth = useAuthStore((s) => s.checkAuth);
-  const isLoading = useAuthStore((s) => s.isLoading);
   const { isCheckingAuth } = useAuthStore();
 
   useEffect(() => {
