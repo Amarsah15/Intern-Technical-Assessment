@@ -40,7 +40,7 @@ docs/Smart_ToDo_API_Postman_Collection.json
    - Click **Fork** (top-right)
    - Select your workspace
    - Save the forked collection
-     Option B: Import
+   Option B: Import
    - Copy the collection URL
    - Open Postman → **Import**
    - Choose **Link**
