@@ -1,41 +1,33 @@
-import User from "../models/User.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import User from "../models/User.model.js";
 
-// SIGNUP
-export const signup = async (req, res) => {
+// REGISTER
+export const register = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { name, email, password } = req.body;
 
-    if (!username || !email || !password) {
-      return res
-        .status(400)
-        .json({ success: false, message: "All fields are required" });
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     if (password.length < 6) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must be at least 6 characters",
-      });
+      return res
+        .status(400)
+        .json({ message: "Password must be at least 6 characters long" });
     }
 
     const normalizedEmail = email.toLowerCase();
 
-    const existingUser = await User.findOne({
-      $or: [{ email: normalizedEmail }, { username }],
-    });
-
+    const existingUser = await User.findOne({ email: normalizedEmail });
     if (existingUser) {
-      return res
-        .status(400)
-        .json({ success: false, message: "User already exists" });
+      return res.status(400).json({ message: "User already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-      username,
+      name,
       email: normalizedEmail,
       password: hashedPassword,
     });
@@ -54,16 +46,18 @@ export const signup = async (req, res) => {
     res.status(201).json({
       user: {
         id: user._id,
-        username: user.username,
+        name: user.name,
         email: user.email,
       },
       success: true,
       message: "User registered successfully",
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, message: "Signup failed", error: error.message });
+    res.status(500).json({
+      success: false,
+      message: "User registration failed",
+      error: error.message,
+    });
   }
 };
 
@@ -73,26 +67,19 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res
-        .status(400)
-        .json({ success: false, message: "All fields are required" });
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     const normalizedEmail = email.toLowerCase();
-    const user = await User.findOne({ email: normalizedEmail });
 
+    const user = await User.findOne({ email: normalizedEmail });
     if (!user) {
-      return res
-        .status(401)
-        .json({ success: false, message: "User not found" });
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordValid) {
-      return res
-        .status(401)
-        .json({ success: false, message: "Invalid credentials" });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -111,8 +98,8 @@ export const login = async (req, res) => {
       message: "Login successful",
       user: {
         id: user._id,
-        username: user.username,
         email: user.email,
+        name: user.name,
       },
     });
   } catch (error) {
@@ -139,18 +126,15 @@ export const logout = (req, res) => {
   }
 };
 
-// GET ME
 export const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.userId).select("username email");
-
+    const user = await User.findById(req.userId).select("-password");
     if (!user) {
       return res.status(404).json({
         success: false,
         message: "User not found",
       });
     }
-
     res
       .status(200)
       .json({ user, success: true, message: "User fetched successfully" });
@@ -158,21 +142,6 @@ export const getMe = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to fetch user",
-      error: error.message,
-    });
-  }
-};
-
-// CHECK USERNAME AVAILABILITY
-export const checkUsername = async (req, res) => {
-  try {
-    const { username } = req.params;
-    const exists = await User.exists({ username });
-    res.status(200).json({ success: true, available: !exists });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Failed to check username",
       error: error.message,
     });
   }

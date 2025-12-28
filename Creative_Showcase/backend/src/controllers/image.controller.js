@@ -8,7 +8,9 @@ export const uploadImage = async (req, res) => {
     const { image, title } = req.body;
 
     if (!image) {
-      return res.status(400).json({ message: "Image is required" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Image is required" });
     }
 
     const cloudinary = getCloudinary();
@@ -16,7 +18,7 @@ export const uploadImage = async (req, res) => {
     if (!cloudinary) {
       return res
         .status(500)
-        .json({ message: "Cloudinary configuration error" });
+        .json({ success: false, message: "Cloudinary configuration error" });
     }
 
     const uploadResult = await cloudinary.uploader.upload(image, {
@@ -32,24 +34,35 @@ export const uploadImage = async (req, res) => {
     });
 
     res.status(201).json({
+      success: true,
       message: "Image uploaded successfully",
       image: newImage,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Image upload failed" });
+    res.status(500).json({
+      success: false,
+      message: "Image upload failed",
+      error: error.message,
+    });
   }
 };
 
-// GET USER IMAGES (PRIVATE)
+// GET MY IMAGES (PRIVATE)
 export const getMyImages = async (req, res) => {
   try {
     const images = await Image.find({ user: req.userId }).sort({
       createdAt: -1,
     });
-    res.json(images);
+    res
+      .status(200)
+      .json({ images, success: true, message: "Images fetched successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Failed to fetch images" });
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch images",
+      error: error.message,
+    });
   }
 };
 
@@ -58,15 +71,29 @@ export const getUserImages = async (req, res) => {
   try {
     const { username } = req.params;
 
+    if (!username) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Username is required" });
+    }
+
     const user = await User.findOne({ username }).select("_id");
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
     }
 
     const images = await Image.find({ user: user._id }).sort({ createdAt: -1 });
-    res.json(images);
+    res
+      .status(200)
+      .json({ images, success: true, message: "Images fetched successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Failed to fetch profile images" });
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch profile images",
+      error: error.message,
+    });
   }
 };
 
@@ -75,8 +102,18 @@ export const deleteImage = async (req, res) => {
   try {
     const image = await Image.findById(req.params.id);
 
-    if (!image || image.user.toString() !== req.userId) {
-      return res.status(403).json({ message: "Unauthorized" });
+    if (!image) {
+      return res.status(404).json({
+        success: false,
+        message: "Image not found",
+      });
+    }
+
+    if (image.user.toString() !== req.userId) {
+      return res.status(403).json({
+        success: false,
+        message: "Unauthorized",
+      });
     }
 
     const cloudinary = getCloudinary();
@@ -87,12 +124,19 @@ export const deleteImage = async (req, res) => {
         .json({ message: "Cloudinary configuration error" });
     }
 
-    await cloudinary.uploader.destroy(image.publicId);
+    if (image.publicId) {
+      await cloudinary.uploader.destroy(image.publicId);
+    }
+
     await image.deleteOne();
 
-    res.json({ message: "Image deleted" });
+    res
+      .status(200)
+      .json({ success: true, message: "Image deleted successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Delete failed" });
+    res
+      .status(500)
+      .json({ success: false, message: "Delete failed", error: error.message });
   }
 };
 
@@ -120,8 +164,14 @@ export const getRandomImages = async (req, res) => {
       },
     ]);
 
-    res.json(images);
+    res
+      .status(200)
+      .json({ images, success: true, message: "Images loaded successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Failed to load images" });
+    res.status(500).json({
+      success: false,
+      message: "Failed to load images",
+      error: error.message,
+    });
   }
 };
