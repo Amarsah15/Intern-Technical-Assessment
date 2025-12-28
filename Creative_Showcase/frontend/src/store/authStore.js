@@ -14,7 +14,7 @@ export const useAuthStore = create((set) => ({
     try {
       const res = await api.get("/auth/me");
       set({
-        user: res.data,
+        user: res.data.user,
         isAuthenticated: true,
         isLoading: false,
       });

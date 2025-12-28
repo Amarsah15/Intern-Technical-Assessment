@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Navbar from "../components/Navbar";
 import Landing from "../pages/Landing";
@@ -9,13 +9,19 @@ import PublicProfile from "../pages/PublicProfile";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "../components/NotFound";
 import { useAuthStore } from "../store/authStore";
-import { Navigate } from "react-router-dom";
 
 export default function AppRoutes() {
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, isCheckingAuth } = useAuthStore();
+
+  // ✅ SAFETY GATE: never render Navbar or Routes until auth is resolved
+  if (isCheckingAuth) {
+    return null; // App.jsx already shows full-page loader
+  }
+
   return (
     <BrowserRouter>
       <Navbar />
+
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -42,16 +48,20 @@ export default function AppRoutes() {
           },
         }}
       />
+
       <Routes>
         <Route path="/" element={<Landing />} />
+
         <Route
           path="/login"
           element={!isAuthenticated ? <Login /> : <Navigate to="/" replace />}
         />
+
         <Route
           path="/signup"
           element={!isAuthenticated ? <Signup /> : <Navigate to="/" replace />}
         />
+
         <Route
           path="/dashboard"
           element={
@@ -60,6 +70,7 @@ export default function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route path="/profile/:username" element={<PublicProfile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

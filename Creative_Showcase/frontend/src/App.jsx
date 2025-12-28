@@ -13,7 +13,7 @@ export default function App() {
 
   if (isCheckingAuth) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen space-y-3">
+      <div className="flex fleax-col items-center justify-center h-screen space-y-3">
         <Loader className="size-10 animate-spin" />
         <h1 className="text-gray-500 text-lg">
           Server is starting up, please wait...
