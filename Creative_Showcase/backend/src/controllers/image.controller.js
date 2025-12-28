@@ -54,9 +54,7 @@ export const getMyImages = async (req, res) => {
     const images = await Image.find({ user: req.userId }).sort({
       createdAt: -1,
     });
-    res
-      .status(200)
-      .json({ images, success: true, message: "Images fetched successfully" });
+    res.json(images);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -85,9 +83,7 @@ export const getUserImages = async (req, res) => {
     }
 
     const images = await Image.find({ user: user._id }).sort({ createdAt: -1 });
-    res
-      .status(200)
-      .json({ images, success: true, message: "Images fetched successfully" });
+    res.json(images);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -164,9 +160,7 @@ export const getRandomImages = async (req, res) => {
       },
     ]);
 
-    res
-      .status(200)
-      .json({ images, success: true, message: "Images loaded successfully" });
+    res.json(images);
   } catch (error) {
     res.status(500).json({
       success: false,
