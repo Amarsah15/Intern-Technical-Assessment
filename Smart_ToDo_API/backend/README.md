@@ -36,15 +36,15 @@ docs/Smart_ToDo_API_Postman_Collection.json
    - Open it in your browser or directly in the Postman desktop application
 2. Fork or Import the Collection
    You can use **either** method:
-   Option A: Fork (Recommended)
-   - Click **Fork** (top-right)
-   - Select your workspace
-   - Save the forked collection
-   Option B: Import
-   - Copy the collection URL
-   - Open Postman → **Import**
-   - Choose **Link**
-   - Paste the URL and import
+   - Option A: Fork (Recommended)
+     - Click **Fork** (top-right)
+     - Select your workspace
+     - Save the forked collection
+   - Option B: Import
+     - Copy the collection URL
+     - Open Postman → **Import**
+     - Choose **Link**
+     - Paste the URL and import
 3. Run Register/Login
 4. Test protected routes (cookies handled automatically)
 5. Fill task id in variable in postman for update/delete
