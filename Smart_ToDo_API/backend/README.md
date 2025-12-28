@@ -36,15 +36,15 @@ docs/Smart_ToDo_API_Postman_Collection.json
    - Open it in your browser or directly in the Postman desktop application
 2. Fork or Import the Collection
    You can use **either** method:
-   **Option A: Fork (Recommended)**
-        - Click **Fork** (top-right)
-        - Select your workspace
-        - Save the forked collection
-    **Option B: Import**
-        - Copy the collection URL
-        - Open Postman → **Import**
-        - Choose **Link**
-        - Paste the URL and import
+   Option A: Fork (Recommended)
+   - Click **Fork** (top-right)
+   - Select your workspace
+   - Save the forked collection
+     Option B: Import
+   - Copy the collection URL
+   - Open Postman → **Import**
+   - Choose **Link**
+   - Paste the URL and import
 3. Run Register/Login
 4. Test protected routes (cookies handled automatically)
 5. Fill task id in variable in postman for update/delete
@@ -58,6 +58,7 @@ docs/Smart_ToDo_API_Postman_Collection.json
 For **Update Task** and **Delete Task** requests, a task ID is required.
 
 #### How to set `TASK_ID`:
+
 1. Run **Create Task** or **Get Tasks**
 2. Copy the `_id` of any task from the response
 3. In Postman:
