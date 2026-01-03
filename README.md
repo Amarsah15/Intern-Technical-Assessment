@@ -40,7 +40,7 @@ HTML, CSS, JavaScript _(Bonus: React used where applicable)_
 
 ---
 
-### 2️⃣ [Smart ToDo API – REST Backend Project](./Smart_ToDo_API)
+### 2️⃣ [Smart ToDo API – REST Backend Project](./Smart_ToDo_API/backend/)
 
 A robust backend service for task management with authentication and CRUD operations.
 
