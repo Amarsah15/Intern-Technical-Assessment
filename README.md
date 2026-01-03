@@ -21,7 +21,7 @@ Each project is organized in its **own dedicated subfolder**, with clear separat
 
 ## Projects Overview
 
-### 1️⃣ Creative Showcase – Full Stack Web Application
+### 1️⃣ [Creative Showcase – Full Stack Web Application](./Creative_Showcase)
 
 A responsive web platform for artists to upload and showcase digital artwork or memories.
 
@@ -40,7 +40,7 @@ HTML, CSS, JavaScript _(Bonus: React used where applicable)_
 
 ---
 
-### 2️⃣ Smart ToDo API – REST Backend Project
+### 2️⃣ [Smart ToDo API – REST Backend Project](./Smart_ToDo_API)
 
 A robust backend service for task management with authentication and CRUD operations.
 
@@ -58,7 +58,7 @@ Node.js (Express), MongoDB
 
 ---
 
-### 3️⃣ Cricket World Cup Insights – BI & Data Visualization
+### 3️⃣ [Cricket World Cup Insights – BI & Data Visualization](./Cricket_World_Cup_Insights)
 
 An interactive analytics dashboard built to explore historical Cricket World Cup data.
 
@@ -78,7 +78,7 @@ Google Looker Studio
 
 ---
 
-### 4️⃣ Weekend Getaway Ranker – Data Engineering
+### 4️⃣ [Weekend Getaway Ranker – Data Engineering](./Weekend_Getaway_Ranker)
 
 A recommendation engine that ranks weekend travel destinations based on distance, rating, and popularity.
 
@@ -97,7 +97,7 @@ Python, Pandas
 
 ---
 
-### 5️⃣ Spotify Lyric Search – Machine Learning
+### 5️⃣ [Spotify Lyric Search – Machine Learning](./Spotify_Lyric_Search)
 
 A text identification system that predicts the **song title and artist** from a lyric snippet.
 
