@@ -116,7 +116,7 @@ Python, scikit-learn
 
 ---
 
-## ▶️ Installation & Execution
+## Installation & Execution
 
 Each project contains its **own `README.md`** with:
 
