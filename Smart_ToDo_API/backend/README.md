@@ -5,11 +5,96 @@ This project is built using Node.js, Express, and MongoDB, following industry-st
 
 ---
 
-## 🧪 API Testing
+## Features
+
+- User Registration & Login
+- JWT-based Authentication (stored in httpOnly cookies)
+- Create, Read, Update, Delete (CRUD) Tasks
+- User-specific task access (authorization enforced)
+- RESTful API with versioning (`/api/v1`)
+- Postman collection for easy API testing
+
+---
+
+## Tech Stack
+
+- **Backend**: Node.js, Express.js (ES Modules)
+- **Database**: MongoDB (Mongoose ODM)
+- **Authentication**: JWT + Cookies
+- **Testing & Docs**: Postman
+- **Other Tools**: dotenv, cookie-parser, bcryptjs, cors
+
+---
+
+## 📁 Project Structure
+
+```
+smart-todo-api/
+│
+├── config/
+│   └── db.js
+├── controllers/
+│   ├── auth.controller.js
+│   └── task.controller.js
+├── middleware/
+│   └── auth.middleware.js
+├── models/
+│   ├── User.model.js
+│   └── Task.model.js
+├── routes/
+│   ├── auth.routes.js
+│   └── task.routes.js
+├── docs/
+│   ├── API_ROUTES.md
+│   └── Smart_ToDo_API_Postman_Collection.json
+├── index.js
+├── .env
+├── package.json
+└── README.md
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the root directory:
+
+```
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/smart_todo
+JWT_SECRET=your_jwt_secret
+CLIENT_URL=http://localhost:3000
+```
+
+---
+
+## Getting Started
+
+### Install Dependencies
+
+```
+npm install
+```
+
+### Run the Server
+
+```
+npm run dev
+```
+
+Server will start on:
+
+```
+http://localhost:5000
+```
+
+---
+
+## API Testing
 
 A complete Postman collection is provided.
 
-📄 File:
+File:
 
 ```
 docs/Smart_ToDo_API_Postman_Collection.json
@@ -51,9 +136,9 @@ docs/Smart_ToDo_API_Postman_Collection.json
 
 ---
 
-## 📝 Task API Usage Notes (IMPORTANT)
+## Task API Usage Notes (IMPORTANT)
 
-### ⚠️ TASK_ID Must Be Added Manually
+### TASK_ID Must Be Added Manually
 
 For **Update Task** and **Delete Task** requests, a task ID is required.
 
@@ -74,92 +159,7 @@ For **Update Task** and **Delete Task** requests, a task ID is required.
 
 ---
 
-## 🚀 Features
-
-- User Registration & Login
-- JWT-based Authentication (stored in httpOnly cookies)
-- Create, Read, Update, Delete (CRUD) Tasks
-- User-specific task access (authorization enforced)
-- RESTful API with versioning (`/api/v1`)
-- Postman collection for easy API testing
-
----
-
-## 🛠️ Tech Stack
-
-- **Backend**: Node.js, Express.js (ES Modules)
-- **Database**: MongoDB (Mongoose ODM)
-- **Authentication**: JWT + Cookies
-- **Testing & Docs**: Postman
-- **Other Tools**: dotenv, cookie-parser, bcryptjs, cors
-
----
-
-## 📁 Project Structure
-
-```
-smart-todo-api/
-│
-├── config/
-│   └── db.js
-├── controllers/
-│   ├── auth.controller.js
-│   └── task.controller.js
-├── middleware/
-│   └── auth.middleware.js
-├── models/
-│   ├── User.model.js
-│   └── Task.model.js
-├── routes/
-│   ├── auth.routes.js
-│   └── task.routes.js
-├── docs/
-│   ├── API_ROUTES.md
-│   └── Smart_ToDo_API_Postman_Collection.json
-├── index.js
-├── .env
-├── package.json
-└── README.md
-```
-
----
-
-## ⚙️ Environment Variables
-
-Create a `.env` file in the root directory:
-
-```
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/smart_todo
-JWT_SECRET=your_jwt_secret
-CLIENT_URL=http://localhost:3000
-```
-
----
-
-## ▶️ Getting Started
-
-### 1️⃣ Install Dependencies
-
-```
-npm install
-```
-
-### 2️⃣ Run the Server
-
-```
-npm run dev
-```
-
-Server will start on:
-
-```
-http://localhost:5000
-```
-
----
-
-## 🔐 Authentication Flow
+## Authentication Flow
 
 - User logs in or registers
 - JWT is generated and stored in an **httpOnly cookie**
@@ -168,7 +168,7 @@ http://localhost:5000
 
 ---
 
-## 📌 API Endpoints
+## API Endpoints
 
 ### Auth Routes (`/api/v1/auth`)
 
@@ -186,7 +186,7 @@ http://localhost:5000
 
 ---
 
-## 🩺 Health Check
+## Health Check
 
 ```
 GET /
@@ -200,6 +200,6 @@ Smart ToDo API is running
 
 ---
 
-## 👤 Author
+## 👨‍💻 Author
 
 **Amarnath Kumar**

@@ -19,34 +19,34 @@ Password: Demo@12345
 
 ---
 
-## 📌 Features
+## Features
 
-### 🔐 Authentication
+### Authentication
 
 - User signup and login
 - Secure JWT authentication using HTTP-only cookies
 - Protected routes for authenticated users
 
-### 🖼️ Image Upload & Storage
+### Image Upload & Storage
 
 - Upload images directly from the dashboard
 - Images stored securely on **Cloudinary**
 - Metadata stored in **MongoDB**
 - Delete uploaded images
 
-### 🧑‍🎨 User Profiles
+### User Profiles
 
 - Private dashboard for managing uploads
 - Public profile page: `/profile/:username`
 - Shareable user galleries
 
-### 🌍 Landing Page
+### Landing Page
 
 - Randomly displays images from all users
 - Masonry (Pinterest-style) layout
 - Responsive design for all screen sizes
 
-### ⚡ Performance & Security
+### Performance & Security
 
 - Rate limiting on authentication and image uploads
 - Skeleton loaders for better UX
@@ -55,7 +55,7 @@ Password: Demo@12345
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ![Landing Page](../Creative_Showcase/frontend/public/landing_page.png)
 ![Skeleton Loader](../Creative_Showcase/frontend/public/skeleton_loader.png)
@@ -68,7 +68,7 @@ Password: Demo@12345
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -127,7 +127,7 @@ Creative-Showcase/
 
 ---
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 Create a `.env` file inside the **backend** folder:
 
@@ -145,16 +145,16 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 ---
 
-## ▶️ How to Run Locally
+## How to Run Locally
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/Amarsah15/Intern-Technical-Assessment.git
 cd Creative-Showcase
 ```
 
-### 2️⃣ Backend Setup
+### Backend Setup
 
 ```bash
 cd backend
@@ -168,7 +168,7 @@ Backend runs at:
 http://localhost:5000
 ```
 
-### 3️⃣ Frontend Setup
+### Frontend Setup
 
 ```bash
 cd frontend
@@ -184,7 +184,7 @@ http://localhost:5173
 
 ---
 
-## 🔄 API Overview
+## API Overview
 
 ### Auth Routes
 
@@ -207,7 +207,7 @@ DELETE /api/v1/images/:id
 
 ---
 
-## 🧠 Key Design Decisions
+## Key Design Decisions
 
 - Cloudinary over local storage for scalability
 - JWT in cookies for secure authentication
@@ -217,7 +217,7 @@ DELETE /api/v1/images/:id
 
 ---
 
-## 📈 Future Enhancements
+## Future Enhancements
 
 - Likes and comments on images
 - User follow system
@@ -232,5 +232,3 @@ DELETE /api/v1/images/:id
 ## 👨‍💻 Author
 
 **Amarnath Kumar**
-
----

@@ -213,5 +213,3 @@ Enter your source city: Kolkata
 ## 👨‍💻 Author
 
 **Amarnath Kumar**
-
----
