@@ -65,9 +65,9 @@ Weekend-Getaway-Ranker/
 │   └── Top Indian Places to Visit.csv
 │
 ├── output/
-│   ├── Kolkata_weekend_getaways_20260103_133045.txt
-│   ├── Pune_weekend_getaways_20260103_141230.txt
-│   └── Siliguri_weekend_getaways_20260103_152018.txt
+│   ├── Kolkata_weekend_getaways_20260103_132644.txt
+│   ├── Pune_weekend_getaways_20260103_132647.txt
+│   └── Siliguri_weekend_getaways_20260103_132638.txt
 │
 ├── weekend_getaway_ranker.py
 ├── requirements.txt
@@ -110,9 +110,6 @@ The dataset includes:
 
 - Python
 - Pandas
-- Math (Haversine formula)
-- Datetime
-- OS
 
 ---
 
