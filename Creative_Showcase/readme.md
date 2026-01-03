@@ -150,8 +150,8 @@ CLOUDINARY_API_SECRET=your_api_secret
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/Amarsah15/creative-showcase.git
-cd creative-showcase
+git clone https://github.com/Amarsah15/Intern-Technical-Assessment.git
+cd Creative-Showcase
 ```
 
 ### 2️⃣ Backend Setup
