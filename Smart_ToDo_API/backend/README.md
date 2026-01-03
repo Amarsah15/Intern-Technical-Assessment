@@ -68,21 +68,24 @@ CLIENT_URL=http://localhost:3000
 
 ---
 
-## Getting Started
+## How to Run Locally
 
-### Install Dependencies
+### Clone the Repository
 
+```bash
+git clone https://github.com/Amarsah15/Intern-Technical-Assessment.git
+cd Smart_ToDo_API
 ```
+
+### Backend Setup
+
+```bash
+cd backend
 npm install
-```
-
-### Run the Server
-
-```
 npm run dev
 ```
 
-Server will start on:
+Backend runs at:
 
 ```
 http://localhost:5000

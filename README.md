@@ -101,13 +101,6 @@ Python, Pandas
 
 A text identification system that predicts the **song title and artist** from a lyric snippet.
 
-**ML Concepts Used:**
-
-- Text preprocessing
-- TF-IDF vectorization
-- Cosine similarity
-- Hybrid similarity scoring
-
 **Technologies:**  
 Python, scikit-learn
 
