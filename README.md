@@ -25,6 +25,8 @@ Each project is organized in its **own dedicated subfolder**, with clear separat
 
 A responsive web platform for artists to upload and showcase digital artwork or memories.
 
+[Creative Showcase Live](https://creative-showcase-amarnath-kumar.vercel.app/)
+
 **Key Features:**
 
 - Landing page with mosaic/masonry image layout
@@ -61,6 +63,8 @@ Node.js (Express), MongoDB
 ### 3️⃣ [Cricket World Cup Insights – BI & Data Visualization](./Cricket_World_Cup_Insights)
 
 An interactive analytics dashboard built to explore historical Cricket World Cup data.
+
+[Cricket World Cup Insights Dashboard](https://lookerstudio.google.com/s/iCKzusO4oSg)
 
 **Dashboard Features:**
 
